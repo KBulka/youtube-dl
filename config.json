@@ -1,0 +1,8 @@
+{
+  "download_path": "C:\\0_BACKUP\\Media_Kreatwyne\\Filmy\\Filmy_Pobrane",
+  "video_format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+  "enable_notifications": true,
+  "check_interval": 1.0,
+  "filename_template": "%(title)s-%(id)s.%(ext)s",
+  "merge_output_format": "mp4"
+}
