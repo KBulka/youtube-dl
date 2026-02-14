@@ -37,12 +37,15 @@ except ImportError:
         NOTIFICATIONS_AVAILABLE = False
         print("Warning: Notifications not available")
 
-# Import youtube-dl
+# Prefer yt-dlp over youtube-dl for better stability and features
 try:
-    import youtube_dl
+    import yt_dlp as youtube_dl
 except ImportError:
-    print("youtube-dl not found. Please install it first.")
-    sys.exit(1)
+    try:
+        import youtube_dl
+    except ImportError:
+        print("Neither yt-dlp nor youtube-dl found. Please install one of them.")
+        sys.exit(1)
 
 
 class YouTubeAutoDownloader:
@@ -226,6 +229,10 @@ class YouTubeAutoDownloader:
             'no_warnings': False,
             'ignoreerrors': False,
             'updatetime': False,
+            'retries': 10,
+            'fragment_retries': 10,
+            'continuedl': True,
+            'nocheckcertificate': True,
             'postprocessors': [{
                 'key': 'FFmpegVideoConvertor',
                 'preferedformat': 'mp4',
